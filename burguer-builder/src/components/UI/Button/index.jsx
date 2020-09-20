@@ -1,13 +1,13 @@
-import classes from '*.module.css'
+import classes from './style.module.css'
 import React from 'react'
 
-const Button = props => {
+const Button = props => (
     <button 
         className={[classes.Button,classes[props.btnType]].join(' ')}
         onClick={props.clicked}
     >
         {props.children}
     </button>
-}
+)
 
 export default Button
