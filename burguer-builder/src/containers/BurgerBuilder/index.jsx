@@ -119,8 +119,7 @@ class BurgerBuilder extends Component {
             .catch(error => {
                 this.setState({ loading: false, purchasing: false })
             })*/
-
-        console.log(this.state.ingredients)
+            
         const queryParams = []
         for (let i in this.state.ingredients) {
             queryParams.push(encodeURIComponent(i) + '='
