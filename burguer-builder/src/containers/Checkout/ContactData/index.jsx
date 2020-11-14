@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import Button from '../../../components/UI/Button'
 import Spinner from '../../../components/UI/Spinner'
 import axios from '../../../axios-orders'
@@ -56,8 +58,7 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Country'
                 },
-                value: ''
-                ,
+                value: '',
                 validation: {
                     required: true
                 },
@@ -71,6 +72,9 @@ class ContactData extends Component {
                     placeholder: 'Your Email'
                 },
                 value: '',
+                validation: {
+                    required: true
+                },
                 valid: false,
                 touched: false
             },
@@ -101,11 +105,11 @@ class ContactData extends Component {
         }
 
         if (rules.minlenght) {
-            isValid = value.lenght >= rules.minlenght && isValid
+            isValid = value.length >= rules.minlenght && isValid
         }
 
         if (rules.maxlenght) {
-            isValid = value.lenght <= rules.maxlenght && isValid
+            isValid = value.length <= rules.maxlenght && isValid
         }
 
         return isValid
@@ -121,7 +125,7 @@ class ContactData extends Component {
         }
 
         const order = {
-            ingredients: this.props.ingredients,
+            ingredients: this.props.ings,
             price: this.props.price,
             orderData: formData
         }
@@ -150,7 +154,7 @@ class ContactData extends Component {
         updatedFormElement.valid = this.checkValidaty(updatedFormElement.value, updatedFormElement.validation)
         updatedFormElement.touched = true
         updatedOrderForm[inputIdentifier] = updatedFormElement
-        const formIsValid = true
+        let formIsValid = true
         for (let inputIdentifier in updatedOrderForm) {
             formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid
         }
@@ -195,4 +199,12 @@ class ContactData extends Component {
         )
     }
 }
-export default ContactData
+
+const mapStateToProps = state => {
+    return {
+        ings: state.ingredients,
+        price: state.totalPrice
+    }
+}
+
+export default connect(mapStateToProps)(ContactData)
