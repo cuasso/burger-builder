@@ -18,7 +18,6 @@ const INGREDIENT_PRICES = {
 
 class BurgerBuilder extends Component {
     state = {
-        ingredients: null,
         totalPrice: 0,
         purchasable: false,
         purchasing: false,
@@ -119,7 +118,7 @@ class BurgerBuilder extends Component {
             .catch(error => {
                 this.setState({ loading: false, purchasing: false })
             })*/
-            
+
         const queryParams = []
         for (let i in this.state.ingredients) {
             queryParams.push(encodeURIComponent(i) + '='
