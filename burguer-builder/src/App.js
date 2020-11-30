@@ -5,6 +5,7 @@ import Layout from './containers/Layout'
 import Checkout from './containers/Checkout'
 import BurgerBuilder from './containers/BurgerBuilder'
 import Orders from './containers/Orders'
+import Auth from './containers/Auth'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Switch >
           <Route path='/checkout' component={Checkout} />
           <Route path='/orders' component={Orders} />
+          <Route path='/auth' component={Auth} />
           <Route path='/' exact component={BurgerBuilder} />
         </Switch>
       </Layout>
