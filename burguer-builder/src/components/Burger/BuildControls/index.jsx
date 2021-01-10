@@ -10,7 +10,7 @@ const controls = [
     { label: 'Meat', type: 'meat' },
 ]
 
-const BuildControls = (props) => {
+const BuildControls = props => {
 
     return (
         <div className={classes.BuildControls}>
@@ -28,7 +28,9 @@ const BuildControls = (props) => {
             <button className={classes.OrderButton}
                 disabled={!props.purchasable}
                 onClick={props.ordered}>
-                ORDER NOW
+                {
+                    props.isAuth ? 'ORDER NOW' : 'SIGN UP TO ORDER'
+                }
             </button>
         </div>
     )
